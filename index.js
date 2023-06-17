@@ -1,17 +1,11 @@
-const http = require('http');
+const express = require('express');
+const app = express();
 
-const server = http.createServer((req, res) => {
-  // Log the incoming request
-  console.log(`Received request: ${req.method} ${req.url}`);
-
-  // Set the response content type
-  res.setHeader('Content-Type', 'text/plain');
-
-  // Send a response
-  res.end(' ');
+app.get('*', (req, res) => {
+  console.log(' ', req.url);
+  res.send(' ');
 });
 
-const port = 5000;
-server.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+app.listen(5000, () => {
+  console.log('Server is listening on port 5000');
 });
